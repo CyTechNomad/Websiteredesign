@@ -109,14 +109,14 @@ export function HomePage() {
             </div>
             <div className="space-y-3 sm:space-y-4 border-l-2 border-primary/20 pl-3 sm:pl-4">
               <div className="relative">
-                <div className="absolute -left sm:-left-[1.3rem] top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-primary terminal-prompt"></span>
                   3+ Years Software Development at First Orion
                 </p>
               </div>
               <div className="relative">
-                <div className="absolute -left-1.5 sm:-left-2 top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-primary terminal-prompt"></span>
                   2 Years IT support at University of Arkansas Community College at Morrilton
@@ -136,14 +136,14 @@ export function HomePage() {
             </div>
             <div className="space-y-3 sm:space-y-4 border-l-2 border-[#ffd700]/20 pl-3 sm:pl-4">
               <div className="relative">
-                <div className="absolute -left-1.5 sm:-left-2 top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-[#ffd700] terminal-prompt"></span>
                   Apprenticeship focused in software development hosted by First Orion
                 </p>
               </div>
               <div className="relative">
-                <div className="absolute -left-1.5 sm:-left-2 top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-[#ffd700] terminal-prompt"></span>
                   AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton
@@ -164,35 +164,42 @@ export function HomePage() {
           </div>
           <div className="space-y-3 sm:space-y-4">
             {projects.map((project) => (
-              <Card 
-                key={project.title} 
-                className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden"
+              <a 
+                key={project.title}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <CardHeader className="relative p-4 sm:p-6">
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0 flex items-center justify-center">
-                      <img 
-                        src={project.logo} 
-                        alt={`${project.title} logo`}
-                        className="w-full h-full object-contain"
-                      />
+                <Card 
+                  className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden cursor-pointer"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardHeader className="relative p-4 sm:p-6">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0 flex items-center justify-center">
+                        <img 
+                          src={project.logo} 
+                          alt={`${project.title} logo`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="flex items-center gap-1.5 sm:gap-2 group-hover:glow-text transition-all duration-300 text-base sm:text-lg">
+                          <span className="text-muted-foreground/50 text-xs sm:text-sm">{'['}</span>
+                          <span className="truncate">{project.title}</span>
+                          <span className="text-muted-foreground/50 text-xs sm:text-sm">{']'}</span>
+                          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary flex-shrink-0" />
+                        </CardTitle>
+                        <CardDescription className="mt-1.5 sm:mt-2 text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                          <span className="terminal-prompt"></span>
+                          {project.description}
+                        </CardDescription>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <CardTitle className="flex items-center gap-1.5 sm:gap-2 group-hover:glow-text transition-all duration-300 text-base sm:text-lg">
-                        <span className="text-muted-foreground/50 text-xs sm:text-sm">{'['}</span>
-                        <span className="truncate">{project.title}</span>
-                        <span className="text-muted-foreground/50 text-xs sm:text-sm">{']'}</span>
-                        <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary flex-shrink-0" />
-                      </CardTitle>
-                      <CardDescription className="mt-1.5 sm:mt-2 text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                        <span className="terminal-prompt"></span>
-                        {project.description}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
+                  </CardHeader>
+                </Card>
+              </a>
             ))}
           </div>
         </div>

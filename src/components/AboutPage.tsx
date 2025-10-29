@@ -1,4 +1,5 @@
 import { User, Heart, Code } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function AboutPage() {
   return (
@@ -19,7 +20,7 @@ export function AboutPage() {
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-[#00d4ff]/30 to-accent/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 glow-border scanline">
-                <img
+                <ImageWithFallback
                   src="/photos/chowell.jpeg"
                   alt="Christian Howell"
                   className="w-full h-full object-cover"
