@@ -16,16 +16,16 @@ export function HomePage() {
     {
       title: 'chowell.dev',
       description: 'This very site. A static site built with Astro.',
-      icon: '⚡',
+      logo: '/public/icons/Astro.svg',
       color: 'text-[#00d4ff]',
-      url: 'https://chowell.dev',
+      url: 'https://github.com/CyTechNomad/chowell.dev',
     },
     {
       title: 'RolleR',
       description: 'A simple, yet powerful, dice roller in your terminal written in Rust.',
-      icon: '🦀',
+      logo: '/public/icons/ferris.svg',
       color: 'text-[#ff00ff]',
-      url: '#',
+      url: 'https://github.com/CyTechNomad/RolleR',
     },
   ];
 
@@ -53,8 +53,12 @@ export function HomePage() {
         <div className="flex-shrink-0">
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-[#00d4ff]/20 to-accent/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-            <div className="relative w-full h-full border-2 border-primary/30 rounded-lg flex items-center justify-center bg-card/50 backdrop-blur-sm group-hover:border-primary/50 transition-all duration-300 scanline">
-              <div className="text-5xl sm:text-6xl lg:text-7xl">👨‍💻</div>
+            <div className="relative w-full h-full border-2 border-primary/30 rounded-lg flex items-center justify-center bg-card/50 backdrop-blur-sm group-hover:border-primary/50 transition-all duration-300 scanline overflow-hidden">
+              <img 
+                src="/public/images/pixel_developer.png" 
+                alt="Pixel art of a developer working at a computer"
+                className="w-full h-full object-contain p-2"
+              />
               <div className="absolute top-2 left-2 text-xs text-primary/50 font-mono">
                 [AVATAR.exe]
               </div>
@@ -167,7 +171,13 @@ export function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <CardHeader className="relative p-4 sm:p-6">
                   <div className="flex items-start gap-2 sm:gap-3">
-                    <span className="text-2xl sm:text-3xl lg:text-4xl flex-shrink-0">{project.icon}</span>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0 flex items-center justify-center">
+                      <img 
+                        src={project.logo} 
+                        alt={`${project.title} logo`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <CardTitle className="flex items-center gap-1.5 sm:gap-2 group-hover:glow-text transition-all duration-300 text-base sm:text-lg">
                         <span className="text-muted-foreground/50 text-xs sm:text-sm">{'['}</span>

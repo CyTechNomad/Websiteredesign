@@ -1,4 +1,3 @@
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { User, Heart, Code } from 'lucide-react';
 
 export function AboutPage() {
@@ -20,8 +19,8 @@ export function AboutPage() {
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-[#00d4ff]/30 to-accent/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 glow-border scanline">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1604046744901-d38344fd6129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBvdXRkb29yJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzYxNDczMzA1fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                <img
+                  src="/public/photos/chowell.jpeg"
                   alt="Christian Howell"
                   className="w-full h-full object-cover"
                 />
@@ -100,10 +99,12 @@ export function AboutPage() {
           <div className="flex justify-center order-1 md:order-2">
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 group">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-primary/30 to-[#ffd700]/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
-              <div className="relative w-full h-full bg-gradient-to-br from-accent/10 to-primary/10 rounded-3xl flex items-center justify-center border-2 border-accent/30 group-hover:border-accent/50 transition-all duration-300 backdrop-blur-sm scanline">
-                <div className="text-6xl sm:text-7xl lg:text-8xl transform group-hover:scale-110 transition-transform duration-300">
-                  🐹
-                </div>
+              <div className="relative w-full h-full bg-gradient-to-br from-accent/10 to-primary/10 rounded-3xl flex items-center justify-center border-2 border-accent/30 group-hover:border-accent/50 transition-all duration-300 backdrop-blur-sm scanline overflow-hidden">
+                <img 
+                  src="/public/images/json_gopher.gif" 
+                  alt="Go Gopher using laptop with JSON on screen"
+                  className="w-full h-full object-contain p-4"
+                />
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4 text-xs text-accent/50 font-mono">
                   {'<GOPHER.lang />'}
                 </div>
