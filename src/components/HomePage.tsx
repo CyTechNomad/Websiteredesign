@@ -109,14 +109,14 @@ export function HomePage() {
             </div>
             <div className="space-y-3 sm:space-y-4 border-l-2 border-primary/20 pl-3 sm:pl-4">
               <div className="relative">
-                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-[0.375rem] sm:top-[0.5rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-primary terminal-prompt"></span>
                   3+ Years Software Development at First Orion
                 </p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-[0.375rem] sm:top-[0.5rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-primary terminal-prompt"></span>
                   2 Years IT support at University of Arkansas Community College at Morrilton
@@ -136,14 +136,14 @@ export function HomePage() {
             </div>
             <div className="space-y-3 sm:space-y-4 border-l-2 border-[#ffd700]/20 pl-3 sm:pl-4">
               <div className="relative">
-                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-[0.375rem] sm:top-[0.5rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-[#ffd700] terminal-prompt"></span>
                   Apprenticeship focused in software development hosted by First Orion
                 </p>
               </div>
               <div className="relative">
-                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-0 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
+                <div className="absolute -left-[0.6875rem] sm:-left-[0.875rem] top-[0.375rem] sm:top-[0.5rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
                 <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                   <span className="text-[#ffd700] terminal-prompt"></span>
                   AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton
@@ -169,7 +169,7 @@ export function HomePage() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block"
+                className="block mb-3 sm:mb-4 last:mb-0"
               >
                 <Card 
                   className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden cursor-pointer"
