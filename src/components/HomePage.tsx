@@ -16,14 +16,14 @@ export function HomePage() {
     {
       title: 'chowell.dev',
       description: 'This very site. A static site built with Astro.',
-      logo: '/public/icons/Astro.svg',
+      logo: '/icons/Astro.svg',
       color: 'text-[#00d4ff]',
       url: 'https://github.com/CyTechNomad/chowell.dev',
     },
     {
       title: 'RolleR',
       description: 'A simple, yet powerful, dice roller in your terminal written in Rust.',
-      logo: '/public/icons/ferris.svg',
+      logo: '/icons/ferris.svg',
       color: 'text-[#ff00ff]',
       url: 'https://github.com/CyTechNomad/RolleR',
     },
@@ -55,7 +55,7 @@ export function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-[#00d4ff]/20 to-accent/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
             <div className="relative w-full h-full border-2 border-primary/30 rounded-lg flex items-center justify-center bg-card/50 backdrop-blur-sm group-hover:border-primary/50 transition-all duration-300 scanline overflow-hidden">
               <img 
-                src="/public/images/pixel_developer.png" 
+                src="/images/pixel_developer.png" 
                 alt="Pixel art of a developer working at a computer"
                 className="w-full h-full object-contain p-2"
               />
