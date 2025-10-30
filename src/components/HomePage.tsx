@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { ExternalLink, Code2, Zap, Box } from 'lucide-react';
+import { Timeline, TimelineItem } from './Timeline';
 
 export function HomePage() {
   const skills = [
@@ -10,6 +11,16 @@ export function HomePage() {
     'Go',
     'Rust',
     'Powershell',
+  ];
+
+  const experienceItems: TimelineItem[] = [
+    { text: '3+ Years Software Development at First Orion' },
+    { text: '2 Years IT support at University of Arkansas Community College at Morrilton' },
+  ];
+
+  const educationItems: TimelineItem[] = [
+    { text: 'Apprenticeship focused in software development hosted by First Orion' },
+    { text: 'AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton' },
   ];
 
   const projects = [
@@ -107,25 +118,7 @@ export function HomePage() {
                 <span className="glow-orange">experience</span>
               </h2>
             </div>
-            <div className="relative flex gap-3 sm:gap-4">
-              {/* Timeline line */}
-              <div className="relative w-0.5 bg-primary/20">
-                {/* Timeline nodes */}
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[3.5rem] sm:top-[4rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
-              </div>
-              {/* Content */}
-              <div className="flex-1 space-y-3 sm:space-y-4">
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-primary terminal-prompt"></span>
-                  3+ Years Software Development at First Orion
-                </p>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-primary terminal-prompt"></span>
-                  2 Years IT support at University of Arkansas Community College at Morrilton
-                </p>
-              </div>
-            </div>
+            <Timeline items={experienceItems} color="primary" promptColor="primary" />
           </div>
 
           {/* Education */}
@@ -137,25 +130,7 @@ export function HomePage() {
                 <span className="glow-gold">education</span>
               </h2>
             </div>
-            <div className="relative flex gap-3 sm:gap-4">
-              {/* Timeline line */}
-              <div className="relative w-0.5 bg-[#ffd700]/20">
-                {/* Timeline nodes */}
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[3.5rem] sm:top-[4rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
-              </div>
-              {/* Content */}
-              <div className="flex-1 space-y-3 sm:space-y-4">
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-[#ffd700] terminal-prompt"></span>
-                  Apprenticeship focused in software development hosted by First Orion
-                </p>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-[#ffd700] terminal-prompt"></span>
-                  AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton
-                </p>
-              </div>
-            </div>
+            <Timeline items={educationItems} color="[#ffd700]" promptColor="[#ffd700]" />
           </div>
         </div>
 
