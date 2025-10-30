@@ -14,13 +14,13 @@ export function HomePage() {
   ];
 
   const experienceItems: TimelineItem[] = [
-    { text: '3+ Years Software Development at First Orion' },
-    { text: '2 Years IT support at University of Arkansas Community College at Morrilton' },
+    { icon: '🟡', text: '3+ Years Software Development at First Orion' },
+    { icon: '🟡', text: '2 Years IT support at University of Arkansas Community College at Morrilton' },
   ];
 
   const educationItems: TimelineItem[] = [
-    { text: 'Apprenticeship focused in software development hosted by First Orion' },
-    { text: 'AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton' },
+    { icon: '💡', text: 'Apprenticeship focused in software development hosted by First Orion' },
+    { icon: '💡', text: 'AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton' },
   ];
 
   const projects = [
@@ -118,7 +118,7 @@ export function HomePage() {
                 <span className="glow-orange">experience</span>
               </h2>
             </div>
-            <Timeline items={experienceItems} color="primary" promptColor="primary" />
+            <Timeline items={experienceItems} lineColor="border-primary/20" />
           </div>
 
           {/* Education */}
@@ -130,7 +130,7 @@ export function HomePage() {
                 <span className="glow-gold">education</span>
               </h2>
             </div>
-            <Timeline items={educationItems} color="[#ffd700]" promptColor="[#ffd700]" />
+            <Timeline items={educationItems} lineColor="border-[#ffd700]/20" />
           </div>
         </div>
 
