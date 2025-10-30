@@ -12,20 +12,20 @@ export interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ items, nodeColor, lineColor }) => {
   return (
-    <div className="space-y-3 sm:space-y-4">
+    <div className="space-y-0">
       {items.map((item, index) => (
         <div key={index} className="relative flex gap-3 sm:gap-4">
           {/* Timeline line and node */}
-          <div className="relative flex-shrink-0 flex flex-col items-center">
+          <div className="relative flex-shrink-0 flex flex-col items-center w-2.5 sm:w-3">
             {/* Circular node */}
-            <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${nodeColor} z-10 flex-shrink-0`}></div>
+            <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${nodeColor} z-10 flex-shrink-0 mt-1.5 sm:mt-2`}></div>
             {/* Vertical line (only show if not the last item) */}
             {index < items.length - 1 && (
-              <div className={`w-0.5 flex-1 mt-1 ${lineColor}`} style={{ minHeight: '2rem' }}></div>
+              <div className={`w-0.5 h-full ${lineColor} absolute top-0 left-1/2 -translate-x-1/2`}></div>
             )}
           </div>
           {/* Content */}
-          <p className="flex-1 text-muted-foreground text-sm sm:text-base leading-relaxed pt-0.5">
+          <p className="flex-1 text-muted-foreground text-sm sm:text-base leading-relaxed py-3 sm:py-4">
             <span className="text-primary terminal-prompt"></span>
             {item.text}
           </p>
