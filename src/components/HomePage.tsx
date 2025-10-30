@@ -107,21 +107,17 @@ export function HomePage() {
                 <span className="glow-orange">experience</span>
               </h2>
             </div>
-            <div className="space-y-3 sm:space-y-4 border-l-2 border-primary/20 pl-3 sm:pl-4">
-              <div className="relative">
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-primary terminal-prompt"></span>
-                  3+ Years Software Development at First Orion
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-primary terminal-prompt"></span>
-                  2 Years IT support at University of Arkansas Community College at Morrilton
-                </p>
-              </div>
+            <div className="space-y-3 sm:space-y-4 border-l-2 border-primary/20 pl-3 sm:pl-4 relative">
+              <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                <span className="text-primary terminal-prompt"></span>
+                3+ Years Software Development at First Orion
+              </p>
+              <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[3.5rem] sm:top-[4rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                <span className="text-primary terminal-prompt"></span>
+                2 Years IT support at University of Arkansas Community College at Morrilton
+              </p>
             </div>
           </div>
 
@@ -134,21 +130,17 @@ export function HomePage() {
                 <span className="glow-gold">education</span>
               </h2>
             </div>
-            <div className="space-y-3 sm:space-y-4 border-l-2 border-[#ffd700]/20 pl-3 sm:pl-4">
-              <div className="relative">
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-[#ffd700] terminal-prompt"></span>
-                  Apprenticeship focused in software development hosted by First Orion
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-[#ffd700] terminal-prompt"></span>
-                  AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton
-                </p>
-              </div>
+            <div className="space-y-3 sm:space-y-4 border-l-2 border-[#ffd700]/20 pl-3 sm:pl-4 relative">
+              <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[0.25rem] sm:top-[0.3125rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                <span className="text-[#ffd700] terminal-prompt"></span>
+                Apprenticeship focused in software development hosted by First Orion
+              </p>
+              <div className="absolute -left-[0.3125rem] sm:-left-[0.375rem] top-[3.5rem] sm:top-[4rem] w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                <span className="text-[#ffd700] terminal-prompt"></span>
+                AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton
+              </p>
             </div>
           </div>
         </div>
