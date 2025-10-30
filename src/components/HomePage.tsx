@@ -118,7 +118,11 @@ export function HomePage() {
                 <span className="glow-orange">experience</span>
               </h2>
             </div>
-            <Timeline items={experienceItems} nodeColor="bg-accent" lineColor="bg-accent/20" />
+            <Timeline
+              items={experienceItems}
+              nodeColor="bg-primary"
+              lineColor="primary/20"
+            />
           </div>
 
           {/* Education */}
