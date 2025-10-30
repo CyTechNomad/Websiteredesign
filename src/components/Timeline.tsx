@@ -16,12 +16,12 @@ export const Timeline: React.FC<TimelineProps> = ({ items, nodeColor, lineColor 
       {items.map((item, index) => (
         <div key={index} className="relative flex gap-3 sm:gap-4">
           {/* Timeline line and node */}
-          <div className="relative flex-shrink-0 flex flex-col items-center w-2.5 sm:w-3">
+          <div className="relative flex-shrink-0 w-2.5 sm:w-3">
             {/* Circular node */}
-            <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${nodeColor} z-10 flex-shrink-0 mt-1.5 sm:mt-2`}></div>
-            {/* Vertical line (only show if not the last item) */}
+            <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${nodeColor} relative z-10 mt-1.5 sm:mt-2`}></div>
+            {/* Vertical line (only show if not the last item) - extends from node to bottom */}
             {index < items.length - 1 && (
-              <div className={`w-0.5 h-full ${lineColor} absolute top-0 left-1/2 -translate-x-1/2`}></div>
+              <div className={`w-0.5 ${lineColor} absolute left-1/2 -translate-x-1/2 top-[calc(0.625rem+0.375rem)] sm:top-[calc(0.75rem+0.5rem)] bottom-0`}></div>
             )}
           </div>
           {/* Content */}
