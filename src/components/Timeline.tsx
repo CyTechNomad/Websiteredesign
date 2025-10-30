@@ -14,8 +14,10 @@ export const Timeline: React.FC<TimelineProps> = ({ items, nodeColor, lineColor 
   return (
     <div className="relative">
       {/* Continuous vertical line */}
-      <div className={`absolute left-[0.4375rem] sm:left-[0.5625rem] top-0 bottom-0 w-0.5 ${lineColor}`}></div>
-      
+      <div
+        className={`absolute left-[0.4375rem] sm:left-[0.5625rem] top-0 bottom-0 w-0.5 border-${lineColor} border`}
+      ></div>
+
       {/* Timeline items */}
       <div className="space-y-0">
         {items.map((item, index) => (
