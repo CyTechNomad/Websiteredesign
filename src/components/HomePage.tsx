@@ -162,17 +162,17 @@ export function HomePage() {
               <span className="glow-text">projects</span>
             </h2>
           </div>
-          <div>
-            {projects.map((project, index) => (
-              <a 
+          <div className="space-y-3 sm:space-y-4">
+            {projects.map((project) => (
+              <Card 
                 key={project.title}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`block ${index !== projects.length - 1 ? 'mb-3 sm:mb-4' : ''}`}
+                className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden"
               >
-                <Card 
-                  className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden cursor-pointer"
+                <a 
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block cursor-pointer"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <CardHeader className="relative p-4 sm:p-6">
@@ -198,8 +198,8 @@ export function HomePage() {
                       </div>
                     </div>
                   </CardHeader>
-                </Card>
-              </a>
+                </a>
+              </Card>
             ))}
           </div>
         </div>
