@@ -21,10 +21,10 @@ export const Timeline: React.FC<TimelineProps> = ({ items, nodeColor, lineColor 
       {/* Timeline items */}
       <div className="space-y-0">
         {items.map((item, index) => (
-          <div key={index} className="relative flex gap-3 sm:gap-4">
+          <div key={index} className="relative flex items-start gap-3 sm:gap-4">
             {/* Node */}
-            <div className="relative flex-shrink-0 w-2.5 sm:w-3">
-              <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${nodeColor} relative z-10 mt-1.5 sm:mt-2`}></div>
+            <div className="relative flex-shrink-0 w-2.5 sm:w-3 pt-[0.9375rem] sm:pt-4">
+              <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${nodeColor} relative z-10`}></div>
             </div>
             {/* Content */}
             <p className="flex-1 text-muted-foreground text-sm sm:text-base leading-relaxed py-3 sm:py-4">
