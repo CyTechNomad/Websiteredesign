@@ -162,14 +162,14 @@ export function HomePage() {
               <span className="glow-text">projects</span>
             </h2>
           </div>
-          <div className="space-y-3 sm:space-y-4">
-            {projects.map((project) => (
+          <div>
+            {projects.map((project, index) => (
               <a 
                 key={project.title}
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block"
+                className={`block ${index !== projects.length - 1 ? 'mb-3 sm:mb-4' : ''}`}
               >
                 <Card 
                   className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden cursor-pointer"
