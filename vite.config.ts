@@ -2,9 +2,19 @@
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
+  import { copyFileSync } from 'fs';
 
   export default defineConfig({
-    plugins: [react()],
+    base: '/Websiteredesign/',
+    plugins: [
+      react(),
+      {
+        name: 'copy-404',
+        closeBundle() {
+          copyFileSync('build/index.html', 'build/404.html');
+        },
+      },
+    ],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
