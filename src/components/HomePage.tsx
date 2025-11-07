@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { ExternalLink, Code2, Zap, Box } from 'lucide-react';
+import { Timeline, TimelineItem } from './Timeline';
 
 export function HomePage() {
   const skills = [
@@ -12,20 +13,30 @@ export function HomePage() {
     'Powershell',
   ];
 
+  const experienceItems: TimelineItem[] = [
+    { text: '3+ Years Software Development at First Orion' },
+    { text: '2 Years IT support at University of Arkansas Community College at Morrilton' },
+  ];
+
+  const educationItems: TimelineItem[] = [
+    { text: 'Apprenticeship focused in software development hosted by First Orion' },
+    { text: 'AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton' },
+  ];
+
   const projects = [
     {
       title: 'chowell.dev',
       description: 'This very site. A static site built with Astro.',
-      icon: '⚡',
+      logo: '/icons/Astro.svg',
       color: 'text-[#00d4ff]',
-      url: 'https://chowell.dev',
+      url: 'https://github.com/CyTechNomad/chowell.dev',
     },
     {
       title: 'RolleR',
       description: 'A simple, yet powerful, dice roller in your terminal written in Rust.',
-      icon: '🦀',
+      logo: '/icons/ferris.svg',
       color: 'text-[#ff00ff]',
-      url: '#',
+      url: 'https://github.com/CyTechNomad/RolleR',
     },
   ];
 
@@ -53,8 +64,12 @@ export function HomePage() {
         <div className="flex-shrink-0">
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-[#00d4ff]/20 to-accent/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-            <div className="relative w-full h-full border-2 border-primary/30 rounded-lg flex items-center justify-center bg-card/50 backdrop-blur-sm group-hover:border-primary/50 transition-all duration-300 scanline">
-              <div className="text-5xl sm:text-6xl lg:text-7xl">👨‍💻</div>
+            <div className="relative w-full h-full border-2 border-primary/30 rounded-lg flex items-center justify-center bg-card/50 backdrop-blur-sm group-hover:border-primary/50 transition-all duration-300 scanline overflow-hidden">
+              <img 
+                src="/images/pixel_developer.png" 
+                alt="Pixel art of a developer working at a computer"
+                className="w-full h-full object-contain p-2"
+              />
               <div className="absolute top-2 left-2 text-xs text-primary/50 font-mono">
                 [AVATAR.exe]
               </div>
@@ -103,22 +118,11 @@ export function HomePage() {
                 <span className="glow-orange">experience</span>
               </h2>
             </div>
-            <div className="space-y-3 sm:space-y-4 border-l-2 border-primary/20 pl-3 sm:pl-4">
-              <div className="relative">
-                <div className="absolute -left sm:-left-[1.3rem] top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary glow-border"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-primary terminal-prompt"></span>
-                  3+ Years Software Development at First Orion
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-1.5 sm:-left-2 top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-primary/50"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-primary terminal-prompt"></span>
-                  2 Years IT support at University of Arkansas Community College at Morrilton
-                </p>
-              </div>
-            </div>
+            <Timeline
+              items={experienceItems}
+              nodeColor="bg-primary"
+              lineColor="primary/20"
+            />
           </div>
 
           {/* Education */}
@@ -130,22 +134,7 @@ export function HomePage() {
                 <span className="glow-gold">education</span>
               </h2>
             </div>
-            <div className="space-y-3 sm:space-y-4 border-l-2 border-[#ffd700]/20 pl-3 sm:pl-4">
-              <div className="relative">
-                <div className="absolute -left-1.5 sm:-left-2 top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700] glow-border"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-[#ffd700] terminal-prompt"></span>
-                  Apprenticeship focused in software development hosted by First Orion
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-1.5 sm:-left-2 top-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffd700]/50"></div>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                  <span className="text-[#ffd700] terminal-prompt"></span>
-                  AS in Computer Information Systems and Technology from University of Arkansas Community College at Morrilton
-                </p>
-              </div>
-            </div>
+            <Timeline items={educationItems} nodeColor="bg-[#ffd700]" lineColor="bg-[#ffd700]/20" />
           </div>
         </div>
 
@@ -161,27 +150,40 @@ export function HomePage() {
           <div className="space-y-3 sm:space-y-4">
             {projects.map((project) => (
               <Card 
-                key={project.title} 
+                key={project.title}
                 className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <CardHeader className="relative p-4 sm:p-6">
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <span className="text-2xl sm:text-3xl lg:text-4xl flex-shrink-0">{project.icon}</span>
-                    <div className="flex-1 min-w-0">
-                      <CardTitle className="flex items-center gap-1.5 sm:gap-2 group-hover:glow-text transition-all duration-300 text-base sm:text-lg">
-                        <span className="text-muted-foreground/50 text-xs sm:text-sm">{'['}</span>
-                        <span className="truncate">{project.title}</span>
-                        <span className="text-muted-foreground/50 text-xs sm:text-sm">{']'}</span>
-                        <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary flex-shrink-0" />
-                      </CardTitle>
-                      <CardDescription className="mt-1.5 sm:mt-2 text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                        <span className="terminal-prompt"></span>
-                        {project.description}
-                      </CardDescription>
+                <a 
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block cursor-pointer"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <CardHeader className="relative p-4 sm:p-6">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0 flex items-center justify-center">
+                        <img 
+                          src={project.logo} 
+                          alt={`${project.title} logo`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="flex items-center gap-1.5 sm:gap-2 group-hover:glow-text transition-all duration-300 text-base sm:text-lg">
+                          <span className="text-muted-foreground/50 text-xs sm:text-sm">{'['}</span>
+                          <span className="truncate">{project.title}</span>
+                          <span className="text-muted-foreground/50 text-xs sm:text-sm">{']'}</span>
+                          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary flex-shrink-0" />
+                        </CardTitle>
+                        <CardDescription className="mt-1.5 sm:mt-2 text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                          <span className="terminal-prompt"></span>
+                          {project.description}
+                        </CardDescription>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
+                  </CardHeader>
+                </a>
               </Card>
             ))}
           </div>
