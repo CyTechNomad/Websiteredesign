@@ -14,6 +14,12 @@
           copyFileSync('build/index.html', 'build/404.html');
         },
       },
+      {
+        name: 'copy-cname',
+        closeBundle() {
+          copyFileSync('CNAME', 'build/CNAME');
+        },
+      },
     ],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
