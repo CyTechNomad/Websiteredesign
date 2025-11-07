@@ -5,7 +5,7 @@
   import { copyFileSync } from 'fs';
 
   export default defineConfig({
-    base: '/Websiteredesign/',
+    base: '/',
     plugins: [
       react(),
       {
@@ -62,6 +62,13 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name].js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
+        },
+      },
     },
     server: {
       port: 3000,
