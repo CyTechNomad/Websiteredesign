@@ -1,4 +1,4 @@
-
+This repo is entirely vibe coded right now. I just wanted to play with it.
   # Website Redesign
 
   This is a code bundle for Website Redesign. The original project is available at https://www.figma.com/design/30ITJmP9P4cBbBxuTNjlxo/Website-Redesign.
