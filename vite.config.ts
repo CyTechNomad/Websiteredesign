@@ -2,16 +2,24 @@
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
-  import { copyFileSync } from 'fs';
+  import { copyFileSync, existsSync } from 'fs';
 
   export default defineConfig({
-    base: '/Websiteredesign/',
+    base: '/',
     plugins: [
       react(),
       {
         name: 'copy-404',
         closeBundle() {
           copyFileSync('build/index.html', 'build/404.html');
+        },
+      },
+      {
+        name: 'copy-cname',
+        closeBundle() {
+          if (existsSync('CNAME')) {
+            copyFileSync('CNAME', 'build/CNAME');
+          }
         },
       },
     ],
@@ -62,6 +70,13 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name].js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
+        },
+      },
     },
     server: {
       port: 3000,
