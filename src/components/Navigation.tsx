@@ -234,7 +234,7 @@ export function Navigation({
                         className="border-primary/30 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                       >
                         <a
-                          href="https://linkedin.com/in/christianhowell"
+                          href="https://www.linkedin.com/in/christian-howell-b025571a4/"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="LinkedIn"
@@ -249,7 +249,7 @@ export function Navigation({
                         className="border-primary/30 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                       >
                         <a
-                          href="https://github.com/chowell"
+                          href="https://github.com/CyTechNomad"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="GitHub"
