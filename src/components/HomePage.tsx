@@ -151,7 +151,7 @@ export function HomePage() {
             {projects.map((project) => (
               <Card 
                 key={project.title}
-                className="group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden"
+                className="gap-0 group relative bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-border overflow-hidden"
               >
                 <a 
                   href={project.url}
