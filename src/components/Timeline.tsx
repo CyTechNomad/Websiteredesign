@@ -6,8 +6,8 @@ export interface TimelineItem {
 
 export interface TimelineProps {
   items: TimelineItem[];
-  nodeColor: string; // Tailwind color class for the node (e.g., 'bg-primary')
-  lineColor: string; // Tailwind color class for the line (e.g., 'bg-primary/20')
+  nodeColor: string; // Tailwind background color class for the node (e.g., 'bg-primary')
+  lineColor: string; // Tailwind background color class for the line (e.g., 'bg-primary/20')
 }
 
 export const Timeline: React.FC<TimelineProps> = ({ items, nodeColor, lineColor }) => {
