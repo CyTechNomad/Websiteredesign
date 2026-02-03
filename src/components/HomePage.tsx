@@ -121,7 +121,7 @@ export function HomePage() {
             <Timeline
               items={experienceItems}
               nodeColor="bg-primary"
-              lineColor="primary/20"
+              lineColor="bg-primary/20"
             />
           </div>
 
