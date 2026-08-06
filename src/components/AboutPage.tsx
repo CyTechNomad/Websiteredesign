@@ -1,6 +1,5 @@
 import { User, Heart, Code } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { Separator } from './ui/separator';
 
 export function AboutPage() {
@@ -21,14 +20,13 @@ export function AboutPage() {
           <div className="flex justify-center items-start">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-[#00d4ff]/30 to-accent/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
-              <Avatar className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 glow-border scanline">
-                <AvatarImage
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 glow-border scanline">
+                <img
                   src="/photos/chowell.jpeg"
                   alt="Christian Howell"
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
-                <AvatarFallback className="bg-card text-primary text-2xl font-mono">CH</AvatarFallback>
-              </Avatar>
+              </div>
               <div className="absolute -bottom-2 -right-2 px-2 sm:px-3 py-1 bg-card border border-primary/30 rounded text-xs font-mono text-primary">
                 [AUTHENTICATED]
               </div>
