@@ -1,29 +1,39 @@
-This repo is entirely vibe coded right now. I just wanted to play with it.
-  # Website Redesign
+# CHowell.Dev – Website Redesign
 
-  This is a code bundle for Website Redesign. The original project is available at https://www.figma.com/design/30ITJmP9P4cBbBxuTNjlxo/Website-Redesign.
+> Vibe-coded personal site. Playing around with Astro 5 + React + shadcn/ui.
+> Original design: [Figma](https://www.figma.com/design/30ITJmP9P4cBbBxuTNjlxo/Website-Redesign)
 
-  ## Running the code
+## Tech Stack
 
-  Run `npm i` to install the dependencies.
+- **[Astro 5](https://astro.build/)** – static site generator with file-based routing
+- **[React 18](https://react.dev/)** – interactive islands via `client:load`
+- **[Tailwind CSS v4](https://tailwindcss.com/)** – utility-first styling
+- **[shadcn/ui](https://ui.shadcn.com/)** – Radix-based component library
+- **[TypeScript](https://www.typescriptlang.org/)** – strict mode
 
-  Run `npm run dev` to start the development server.
+## Pages
 
-  ## Deploying to GitHub Pages
+| Route | File |
+|---|---|
+| `/` | `src/pages/index.astro` |
+| `/about` | `src/pages/about.astro` |
+| `/blog` | `src/pages/blog.astro` |
 
-  This project is configured to deploy to GitHub Pages with a custom domain (new.chowell.dev).
+## Getting Started
 
-  ### Deployment Steps
+```bash
+npm install        # install dependencies
+npm run dev        # start dev server at http://localhost:4321
+npm run build      # build static output to dist/
+npm run preview    # preview the production build locally
+```
 
-  1. Install dependencies: `npm install`
-  2. Deploy to GitHub Pages: `npm run deploy`
-  3. In the GitHub repository settings, go to **Settings → Pages**
-  4. Set the source to the **gh-pages** branch
-  5. The site will be available at https://new.chowell.dev
+## Deploying to GitHub Pages
 
-  ### How it works
+The site is configured for [GitHub Pages](https://pages.github.com/) with the custom domain **new.chowell.dev**.
 
-  - The `npm run deploy` command automatically builds the project and deploys it to the gh-pages branch
-  - The CNAME file configures the custom domain
-  - The 404.html fallback ensures client-side routing works correctly for the SPA
-  
+1. Build and push your branch
+2. GitHub Actions (or manual Pages config) deploys from the `dist/` output
+3. The `CNAME` file in `public/` sets the custom domain
+4. Go to **Settings → Pages** and set the source branch/folder as needed
+
