@@ -1,7 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
+import { AspectRatio } from './ui/aspect-ratio';
 import { ExternalLink, Code2, Zap, Box } from 'lucide-react';
-import { Timeline, TimelineItem } from './Timeline';
+import { Timeline } from './Timeline';
+import type { TimelineItem } from './Timeline';
 
 export function HomePage() {
   const skills = [

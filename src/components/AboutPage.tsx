@@ -1,5 +1,6 @@
 import { User, Heart, Code } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Card, CardContent } from './ui/card';
+import { Separator } from './ui/separator';
 
 export function AboutPage() {
   return (
@@ -17,10 +18,10 @@ export function AboutPage() {
         {/* Who am I section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
           <div className="flex justify-center items-start">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 group">
+            <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-[#00d4ff]/30 to-accent/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 glow-border scanline">
-                <ImageWithFallback
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 glow-border scanline">
+                <img
                   src="/photos/chowell.jpeg"
                   alt="Christian Howell"
                   className="w-full h-full object-cover"
@@ -66,6 +67,7 @@ export function AboutPage() {
         </div>
 
         {/* Passion for backend section */}
+        <Separator className="my-8 sm:my-12 lg:my-16 bg-primary/20" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           <div className="space-y-4 sm:space-y-6 order-2 md:order-1">
             <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
@@ -118,27 +120,29 @@ export function AboutPage() {
         </div>
 
         {/* Terminal-style footer with stats */}
-        <div className="mt-8 sm:mt-12 lg:mt-16 p-4 sm:p-6 bg-card/30 border border-primary/20 rounded font-mono text-xs sm:text-sm space-y-2">
-          <div className="text-muted-foreground">
-            <span className="text-primary">$</span> cat /proc/developer/stats
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-3 sm:mt-4">
-            <div className="flex items-center gap-2">
-              <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
-              <span className="text-muted-foreground">Location:</span>
-              <span className="text-primary">Arkansas, USA</span>
+        <Card className="mt-8 sm:mt-12 lg:mt-16 bg-card/30 border-primary/20 rounded font-mono text-xs sm:text-sm">
+          <CardContent className="p-4 sm:p-6 space-y-2">
+            <div className="text-muted-foreground">
+              <span className="text-primary">$</span> cat /proc/developer/stats
             </div>
-            <div className="flex items-center gap-2">
-              <Code className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
-              <span className="text-muted-foreground">Status:</span>
-              <span className="text-primary">{'{ coding: true }'}</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-3 sm:mt-4">
+              <div className="flex items-center gap-2">
+                <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
+                <span className="text-muted-foreground">Location:</span>
+                <span className="text-primary">Arkansas, USA</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Code className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+                <span className="text-muted-foreground">Status:</span>
+                <span className="text-primary">{'{ coding: true }'}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-muted-foreground">Role:</span>
+                <span className="text-primary">Software_Engineer</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">Role:</span>
-              <span className="text-primary">Software_Engineer</span>
-            </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

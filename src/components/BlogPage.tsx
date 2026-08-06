@@ -78,12 +78,14 @@ export function BlogPage() {
         </div>
 
         {/* Terminal-style footer */}
-        <div className="mt-8 sm:mt-12 p-3 sm:p-4 bg-card/30 border border-primary/20 rounded font-mono text-xs sm:text-sm">
-          <div className="text-muted-foreground">
-            <span className="text-primary">$</span> echo "More posts coming soon..."
-          </div>
-          <div className="text-primary mt-1 animate-pulse">_</div>
-        </div>
+        <Card className="mt-8 sm:mt-12 bg-card/30 border-primary/20 rounded font-mono text-xs sm:text-sm">
+          <CardContent className="p-3 sm:p-4">
+            <div className="text-muted-foreground">
+              <span className="text-primary">$</span> echo "More posts coming soon..."
+            </div>
+            <div className="text-primary mt-1 animate-pulse">_</div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

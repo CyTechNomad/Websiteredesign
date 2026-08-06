@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import {
   Sheet,
@@ -7,27 +7,39 @@ import {
   SheetTitle,
   SheetDescription,
 } from "./ui/sheet";
-import { Linkedin, Github, Terminal, Sun, Moon, Menu, X } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "./ui/tooltip";
+import { Linkedin, Github, Terminal, Sun, Moon, Menu } from "lucide-react";
 
 interface NavigationProps {
-  currentPage: "home" | "blog" | "about";
-  setCurrentPage: (page: "home" | "blog" | "about") => void;
-  theme: "dark" | "light";
-  toggleTheme: () => void;
+  currentPath?: string;
 }
 
-export function Navigation({
-  currentPage,
-  setCurrentPage,
-  theme,
-  toggleTheme,
-}: NavigationProps) {
+export function Navigation({ currentPath = "/" }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
-  const handlePageChange = (page: "home" | "blog" | "about") => {
-    setCurrentPage(page);
-    setIsOpen(false);
+  useEffect(() => {
+    // Read the theme applied by the inline script in BaseLayout
+    const current = document.documentElement.classList.contains("light")
+      ? "light"
+      : "dark";
+    setTheme(current);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(next);
+    localStorage.setItem("theme", next);
+    setTheme(next);
   };
+
+  // Normalise trailing slashes for comparison
+  const activePath = currentPath.replace(/\/$/, "") || "/";
 
   return (
     <nav className="border-b border-primary/20 bg-card/50 backdrop-blur-sm sticky top-0 z-50 relative">
@@ -35,8 +47,8 @@ export function Navigation({
       <div className="container mx-auto px-3 sm:px-4 lg:px-8 relative">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
-          <button
-            onClick={() => handlePageChange("home")}
+          <a
+            href="/"
             className="flex items-center gap-1.5 sm:gap-2 group"
           >
             <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-primary glow-amber" />
@@ -45,81 +57,98 @@ export function Navigation({
               <span className="text-primary">CHowell.Dev</span>
               <span className="text-muted-foreground hidden sm:inline">]</span>
             </span>
-          </button>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <button
-              onClick={() => setCurrentPage("blog")}
+            <a
+              href="/blog"
               className={`relative transition-all duration-300 ${
-                currentPage === "blog"
+                activePath === "/blog"
                   ? "text-primary glow-text"
                   : "text-muted-foreground hover:text-primary"
               }`}
             >
               <span className="text-muted-foreground/50">~/</span>blog
-              {currentPage === "blog" && (
+              {activePath === "/blog" && (
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary glow-border"></span>
               )}
-            </button>
-            <button
-              onClick={() => setCurrentPage("about")}
+            </a>
+            <a
+              href="/about"
               className={`relative transition-all duration-300 ${
-                currentPage === "about"
+                activePath === "/about"
                   ? "text-primary glow-text"
                   : "text-muted-foreground hover:text-primary"
               }`}
             >
               <span className="text-muted-foreground/50">~/</span>about
-              {currentPage === "about" && (
+              {activePath === "/about" && (
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary glow-border"></span>
               )}
-            </button>
+            </a>
 
             <div className="flex items-center gap-2 ml-2 border-l border-primary/20 pl-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-              >
-                <a
-                  href="https://www.linkedin.com/in/christian-howell-b025571a4/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-              >
-                <a
-                  href="https://github.com/CyTechNomad"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleTheme}
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                    aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                  >
+                    {theme === "dark" ? (
+                      <Sun className="w-5 h-5" />
+                    ) : (
+                      <Moon className="w-5 h-5" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {theme === "dark" ? "Light mode" : "Dark mode"}
+                </TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/christian-howell-b025571a4/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>LinkedIn</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                  >
+                    <a
+                      href="https://github.com/CyTechNomad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>GitHub</TooltipContent>
+              </Tooltip>
             </div>
           </div>
 
@@ -169,10 +198,11 @@ export function Navigation({
 
                   {/* Navigation Links */}
                   <div className="space-y-4">
-                    <button
-                      onClick={() => handlePageChange("home")}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
-                        currentPage === "home"
+                    <a
+                      href="/"
+                      onClick={() => setIsOpen(false)}
+                      className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
+                        activePath === "/"
                           ? "border-primary/50 bg-primary/10 text-primary glow-border"
                           : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
                       }`}
@@ -184,12 +214,13 @@ export function Navigation({
                           home
                         </span>
                       </div>
-                    </button>
+                    </a>
 
-                    <button
-                      onClick={() => handlePageChange("blog")}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
-                        currentPage === "blog"
+                    <a
+                      href="/blog"
+                      onClick={() => setIsOpen(false)}
+                      className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
+                        activePath === "/blog"
                           ? "border-primary/50 bg-primary/10 text-primary glow-border"
                           : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
                       }`}
@@ -201,12 +232,13 @@ export function Navigation({
                           blog
                         </span>
                       </div>
-                    </button>
+                    </a>
 
-                    <button
-                      onClick={() => handlePageChange("about")}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
-                        currentPage === "about"
+                    <a
+                      href="/about"
+                      onClick={() => setIsOpen(false)}
+                      className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
+                        activePath === "/about"
                           ? "border-primary/50 bg-primary/10 text-primary glow-border"
                           : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
                       }`}
@@ -218,7 +250,7 @@ export function Navigation({
                           about
                         </span>
                       </div>
-                    </button>
+                    </a>
                   </div>
 
                   {/* Social Links */}
@@ -278,3 +310,4 @@ export function Navigation({
     </nav>
   );
 }
+

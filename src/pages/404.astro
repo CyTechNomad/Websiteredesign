@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — CHowell.Dev">
+  <div class="container mx-auto px-4 py-24 text-center relative z-10">
+    <div class="text-xs text-muted-foreground mb-4 font-mono">
+      <span class="text-primary">$</span> cat error.txt
+    </div>
+    <h1 class="text-6xl font-mono text-primary glow-amber mb-4">404</h1>
+    <p class="text-muted-foreground font-mono mb-8">
+      <span class="text-primary">ERROR:</span> page not found
+    </p>
+    <a
+      href="/"
+      class="font-mono text-primary hover:glow-text transition-all duration-300 border border-primary/30 px-6 py-3 rounded hover:border-primary/60 hover:bg-primary/10"
+    >
+      <span class="text-muted-foreground/50">~/</span>home
+    </a>
+  </div>
+</BaseLayout>
