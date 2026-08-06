@@ -1,0 +1,44 @@
+---
+import { Navigation } from '../components/Navigation';
+import '../styles/globals.css';
+
+interface Props {
+  title?: string;
+  currentPath?: string;
+}
+
+const { title = 'CHowell.Dev', currentPath = Astro.url.pathname } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/icons/Astro.svg" />
+    <!-- Prevent flash-of-wrong-theme: apply saved theme class synchronously before paint -->
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem('theme');
+        var theme = saved === 'light' ? 'light' : 'dark';
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background relative">
+      <!-- Grid background pattern -->
+      <div
+        class="fixed inset-0 pointer-events-none"
+        style="background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 40px 40px;"
+      ></div>
+
+      <Navigation client:load currentPath={currentPath} />
+
+      <main class="relative">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
