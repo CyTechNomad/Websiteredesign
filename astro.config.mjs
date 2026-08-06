@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   site: 'https://new.chowell.dev',
   output: 'static',
+  trailingSlash: 'never',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],

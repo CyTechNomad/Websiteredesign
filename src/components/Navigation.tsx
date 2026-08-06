@@ -7,6 +7,11 @@ import {
   SheetTitle,
   SheetDescription,
 } from "./ui/sheet";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "./ui/tooltip";
 import { Linkedin, Github, Terminal, Sun, Moon, Menu } from "lucide-react";
 
 interface NavigationProps {
@@ -84,49 +89,66 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
             </a>
 
             <div className="flex items-center gap-2 ml-2 border-l border-primary/20 pl-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-              >
-                <a
-                  href="https://www.linkedin.com/in/christian-howell-b025571a4/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-              >
-                <a
-                  href="https://github.com/CyTechNomad"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleTheme}
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                    aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                  >
+                    {theme === "dark" ? (
+                      <Sun className="w-5 h-5" />
+                    ) : (
+                      <Moon className="w-5 h-5" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {theme === "dark" ? "Light mode" : "Dark mode"}
+                </TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/christian-howell-b025571a4/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>LinkedIn</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                  >
+                    <a
+                      href="https://github.com/CyTechNomad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>GitHub</TooltipContent>
+              </Tooltip>
             </div>
           </div>
 
