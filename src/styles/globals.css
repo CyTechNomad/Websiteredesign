@@ -370,3 +370,28 @@ body {
     }
   }
 }
+
+/* Blog prose content - grey text instead of orange (dark mode only) */
+@layer utilities {
+  article.prose,
+  article.prose p,
+  article.prose h1,
+  article.prose h2,
+  article.prose h3,
+  article.prose h4,
+  article.prose li,
+  article.prose strong,
+  article.prose blockquote {
+    color: #6b6b6b !important;
+  }
+  
+  article.prose a {
+    color: var(--primary) !important;
+  }
+  
+  /* Code blocks should not be greyed in light mode */
+  .light article.prose code,
+  .light article.prose pre code {
+    color: inherit;
+  }
+}
