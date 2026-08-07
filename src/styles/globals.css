@@ -395,3 +395,11 @@ body {
     color: inherit;
   }
 }
+
+/* About page content - keep grey text in light mode */
+@layer utilities {
+  .light .about-content,
+  .light .about-content p {
+    color: #6b6b6b !important;
+  }
+}
