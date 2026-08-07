@@ -1,0 +1,57 @@
+---
+// ScrollIndicator - Shows a subtle bounce arrow that fades out on scroll
+---
+
+<div id="scroll-indicator" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 transition-opacity duration-500">
+  <div class="flex flex-col items-center gap-1 text-primary/60 animate-bounce-slow">
+    <span class="text-xs font-mono hidden sm:block">scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+      <path d="m6 9 6 6 6-6"/>
+    </svg>
+  </div>
+</div>
+
+<style>
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  function initScrollIndicator() {
+    const indicator = document.getElementById('scroll-indicator');
+    if (!indicator) return;
+
+    function checkScroll() {
+      // Check if user has scrolled to the bottom
+      const scrolledToBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 50);
+      
+      if (scrolledToBottom) {
+        indicator.style.opacity = '0';
+        indicator.style.pointerEvents = 'none';
+      } else {
+        indicator.style.opacity = '1';
+        indicator.style.pointerEvents = 'auto';
+      }
+    }
+
+    // Check immediately
+    checkScroll();
+    
+    // Listen for scroll
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll, { passive: true });
+  }
+
+  initScrollIndicator();
+  document.addEventListener('astro:page-load', initScrollIndicator);
+</script>

@@ -432,6 +432,18 @@ body {
     transform: translateY(0);
   }
   
+  /* Faster version for sections that shouldn't feel delayed */
+  .animate-on-scroll-fast {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  }
+  
+  .animate-on-scroll-fast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
   /* Fade in from left with rotation */
   .animate-slide-left {
     opacity: 0;
@@ -596,6 +608,9 @@ body {
   .stagger-pop.is-visible > *:nth-child(6) { transition-delay: 300ms; opacity: 1; transform: scale(1); }
   .stagger-pop.is-visible > *:nth-child(7) { transition-delay: 360ms; opacity: 1; transform: scale(1); }
   .stagger-pop.is-visible > *:nth-child(8) { transition-delay: 420ms; opacity: 1; transform: scale(1); }
+  .stagger-pop.is-visible > *:nth-child(9) { transition-delay: 480ms; opacity: 1; transform: scale(1); }
+  .stagger-pop.is-visible > *:nth-child(10) { transition-delay: 540ms; opacity: 1; transform: scale(1); }
+  .stagger-pop.is-visible > *:nth-child(n+11) { transition-delay: 600ms; opacity: 1; transform: scale(1); }
   
   /* Delay modifiers */
   .delay-100 { transition-delay: 100ms !important; }

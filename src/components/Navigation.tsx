@@ -49,18 +49,18 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
   const activePath = currentPath.replace(/\/$/, "") || "/";
 
   return (
-    <nav className="border-b border-primary/20 bg-card/50 backdrop-blur-sm sticky top-0 z-50 relative">
+    <nav className="border-b border-primary/20 bg-card/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none">
       </div>
       <div className="container mx-auto px-3 sm:px-4 lg:px-8 relative">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a
             href="/"
-            className="flex items-center gap-1.5 sm:gap-2 group"
+            className="flex items-center gap-2 sm:gap-2.5 group"
           >
-            <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-primary glow-amber" />
-            <span className="tracking-tight group-hover:glow-text transition-all duration-300">
+            <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-primary glow-amber" />
+            <span className="tracking-tight group-hover:glow-text transition-all duration-300 text-base sm:text-lg">
               <span className="text-muted-foreground hidden sm:inline">[</span>
               <span className="text-primary">CHowell.Dev</span>
               <span className="text-muted-foreground hidden sm:inline">]</span>
@@ -68,12 +68,12 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <div className="hidden md:flex items-center gap-5 lg:gap-8">
             {navLinks.filter(link => !link.mobileOnly).map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative transition-all duration-300 ${
+                className={`relative transition-all duration-300 text-base ${
                   activePath === link.href
                     ? "text-primary glow-text"
                     : "text-muted-foreground hover:text-primary"
@@ -87,14 +87,14 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
               </a>
             ))}
 
-            <div className="flex items-center gap-2 ml-2 border-l border-primary/20 pl-4">
+            <div className="flex items-center gap-3 ml-3 border-l border-primary/20 pl-5">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={toggleTheme}
-                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border h-10 w-10"
                     aria-label={`Switch to ${
                       theme === "dark" ? "light" : "dark"
                     } mode`}
@@ -116,7 +116,7 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={link.label}
-                      className="inline-flex items-center justify-center h-9 w-9 rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
+                      className="inline-flex items-center justify-center h-10 w-10 rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
                     >
                       {link.label === "LinkedIn" && <Linkedin className="w-5 h-5" />}
                       {link.label === "GitHub" && <Github className="w-5 h-5" />}
@@ -134,20 +134,20 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="hover:bg-primary/10 hover:text-primary transition-all duration-300 h-8 w-8"
+              className="hover:bg-primary/10 hover:text-primary transition-all duration-300 h-9 w-9"
               aria-label={`Switch to ${
                 theme === "dark" ? "light" : "dark"
               } mode`}
             >
               {theme === "dark"
-                ? <Sun className="w-4 h-4" />
-                : <Moon className="w-4 h-4" />}
+                ? <Sun className="w-5 h-5" />
+                : <Moon className="w-5 h-5" />}
             </Button>
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
-                  className="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                  className="inline-flex items-center justify-center h-9 w-9 rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-300"
                   aria-label="Open menu"
                 >
                   <Menu className="w-5 h-5" />

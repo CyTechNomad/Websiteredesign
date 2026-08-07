@@ -1,5 +1,6 @@
 ---
 import { Navigation } from '../components/Navigation';
+import Footer from '../components/Footer.astro';
 import '../styles/globals.css';
 
 interface Props {
@@ -27,7 +28,7 @@ const { title = 'CHowell.Dev', currentPath = Astro.url.pathname } = Astro.props;
     </script>
   </head>
   <body>
-    <div class="min-h-screen bg-background relative">
+    <div class="min-h-screen bg-background relative flex flex-col">
       <!-- Grid background pattern -->
       <div
         class="fixed inset-0 pointer-events-none"
@@ -36,9 +37,11 @@ const { title = 'CHowell.Dev', currentPath = Astro.url.pathname } = Astro.props;
 
       <Navigation client:load currentPath={currentPath} />
 
-      <main class="relative">
+      <main class="relative flex-1 pt-16 sm:pt-20">
         <slot />
       </main>
+
+      <Footer />
     </div>
   </body>
 </html>

@@ -1,6 +1,7 @@
 ---
 export interface TimelineItem {
   text: string;
+  subItems?: string[];
 }
 
 interface Props {
@@ -25,10 +26,22 @@ const { items, nodeColor, lineColor } = Astro.props;
           <div class={`w-2.5 h-2.5 ml-[.20rem] mt-[.20rem] sm:mt-[.5rem] sm:w-3 sm:h-3 rounded-full ${nodeColor} relative z-10`}></div>
         </div>
         <!-- Content -->
-        <p class="flex-1 text-muted-foreground text-sm sm:text-base leading-relaxed py-3 sm:py-4">
-          <span class="text-primary terminal-prompt"></span>
-          {item.text}
-        </p>
+        <div class="flex-1 py-3 sm:py-4">
+          <p class="text-muted-foreground text-sm sm:text-base leading-relaxed">
+            <span class="text-primary terminal-prompt"></span>
+            {item.text}
+          </p>
+          {item.subItems && item.subItems.length > 0 && (
+            <ul class="mt-2 space-y-1 pl-4">
+              {item.subItems.map((subItem) => (
+                <li class="text-muted-foreground/80 text-xs sm:text-sm leading-relaxed flex items-start gap-2">
+                  <span class="text-primary/60 mt-1">•</span>
+                  <span>{subItem}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     ))}
   </div>

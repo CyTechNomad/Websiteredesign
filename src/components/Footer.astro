@@ -1,0 +1,28 @@
+---
+// Simple footer - shows at the bottom of the page
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-primary/20 bg-card/30 backdrop-blur-sm mt-12 sm:mt-16 lg:mt-20">
+  <div class="container mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground font-mono">
+      <div class="flex items-center gap-2">
+        <span class="text-primary">$</span>
+        <span>echo "© {currentYear} Christian C. Howell"</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/CyTechNomad" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors duration-300">
+          GitHub
+        </a>
+        <span class="text-primary/30">|</span>
+        <a href="https://www.linkedin.com/in/christian-c-howell" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors duration-300">
+          LinkedIn
+        </a>
+        <span class="text-primary/30">|</span>
+        <a href="mailto:christian@chowell.dev" class="hover:text-primary transition-colors duration-300">
+          Email
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
