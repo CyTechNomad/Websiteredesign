@@ -2,6 +2,25 @@
 import Timeline from './Timeline.astro';
 import type { TimelineItem } from './Timeline.astro';
 
+// Calculate years of experience from start date
+function getYearsExperience(startDate: Date): number {
+  const now = new Date();
+  const years = now.getFullYear() - startDate.getFullYear();
+  const monthDiff = now.getMonth() - startDate.getMonth();
+  // If we haven't reached the anniversary month yet, subtract a year
+  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < startDate.getDate())) {
+    return years - 1;
+  }
+  return years;
+}
+
+const firstOrionStart = new Date('2022-01-13');
+const uaccmStart = new Date('2019-09-01');
+const uaccmEnd = new Date('2021-12-31');
+
+const firstOrionYears = getYearsExperience(firstOrionStart);
+const uaccmYears = Math.round((uaccmEnd.getTime() - uaccmStart.getTime()) / (1000 * 60 * 60 * 24 * 365));
+
 const skills = [
   "Source Control",
   "CI/CD",
@@ -12,8 +31,8 @@ const skills = [
 ];
 
 const experienceItems: TimelineItem[] = [
-  { text: "3+ Years Software Development at First Orion" },
-  { text: "2 Years IT support at University of Arkansas Community College at Morrilton" },
+  { text: `${firstOrionYears}+ Years Software Development at First Orion` },
+  { text: `${uaccmYears} Years IT support at University of Arkansas Community College at Morrilton` },
 ];
 
 const educationItems: TimelineItem[] = [
@@ -23,9 +42,17 @@ const educationItems: TimelineItem[] = [
 
 const projects = [
   {
+    title: "Crabmail",
+    description: "A terminal-based email client written in Rust, powered by Ratatui.",
+    logo: "/icons/ferris.svg",
+    color: "text-[#ff6600]",
+    url: "https://github.com/CyTechNomad/crabmail",
+  },
+  {
     title: "chowell.dev",
     description: "This very site. A static site built with Astro.",
-    logo: "/icons/Astro.svg",
+    logo: "/icons/astro-icon-gradient.svg",
+    logoLight: "/icons/astro-icon-gradient-dark.svg",
     color: "text-[#00d4ff]",
     url: "https://github.com/CyTechNomad/chowell.dev",
   },
@@ -143,7 +170,14 @@ const projects = [
               <div class="relative p-4 sm:p-6">
                 <div class="flex items-start gap-2 sm:gap-3">
                   <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0 flex items-center justify-center">
-                    <img src={project.logo} alt={`${project.title} logo`} class="w-full h-full object-contain" />
+                    {project.logoLight ? (
+                      <>
+                        <img src={project.logo} alt={`${project.title} logo`} class="w-full h-full object-contain dark-only" />
+                        <img src={project.logoLight} alt={`${project.title} logo`} class="w-full h-full object-contain light-only" />
+                      </>
+                    ) : (
+                      <img src={project.logo} alt={`${project.title} logo`} class="w-full h-full object-contain" />
+                    )}
                   </div>
                   <div class="flex-1 min-w-0">
                     <h3 class="font-semibold leading-none tracking-tight flex items-center gap-1.5 sm:gap-2 group-hover:glow-text transition-all duration-300 text-base sm:text-lg">

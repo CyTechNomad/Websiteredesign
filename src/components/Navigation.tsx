@@ -1,22 +1,29 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
-  SheetTitle,
   SheetDescription,
+  SheetTitle,
+  SheetTrigger,
 } from "./ui/sheet";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "./ui/tooltip";
-import { Linkedin, Github, Terminal, Sun, Moon, Menu } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Github, Linkedin, Menu, Moon, Sun, Terminal } from "lucide-react";
 
 interface NavigationProps {
   currentPath?: string;
 }
+
+const navLinks = [
+  { href: "/", label: "home", mobileOnly: true },
+  { href: "/blog", label: "blog" },
+  { href: "/about", label: "about" },
+];
+
+const socialLinks = [
+  { href: "https://www.linkedin.com/in/christian-c-howell", label: "LinkedIn" },
+  { href: "https://github.com/CyTechNomad", label: "GitHub" },
+];
 
 export function Navigation({ currentPath = "/" }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +50,8 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
 
   return (
     <nav className="border-b border-primary/20 bg-card/50 backdrop-blur-sm sticky top-0 z-50 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 pointer-events-none">
+      </div>
       <div className="container mx-auto px-3 sm:px-4 lg:px-8 relative">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
@@ -61,32 +69,23 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <a
-              href="/blog"
-              className={`relative transition-all duration-300 ${
-                activePath === "/blog"
-                  ? "text-primary glow-text"
-                  : "text-muted-foreground hover:text-primary"
-              }`}
-            >
-              <span className="text-muted-foreground/50">~/</span>blog
-              {activePath === "/blog" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary glow-border"></span>
-              )}
-            </a>
-            <a
-              href="/about"
-              className={`relative transition-all duration-300 ${
-                activePath === "/about"
-                  ? "text-primary glow-text"
-                  : "text-muted-foreground hover:text-primary"
-              }`}
-            >
-              <span className="text-muted-foreground/50">~/</span>about
-              {activePath === "/about" && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary glow-border"></span>
-              )}
-            </a>
+            {navLinks.filter(link => !link.mobileOnly).map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`relative transition-all duration-300 ${
+                  activePath === link.href
+                    ? "text-primary glow-text"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
+              >
+                <span className="text-muted-foreground/50">~/</span>{link.label}
+                {activePath === link.href && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary glow-border">
+                  </span>
+                )}
+              </a>
+            ))}
 
             <div className="flex items-center gap-2 ml-2 border-l border-primary/20 pl-4">
               <Tooltip>
@@ -96,59 +95,36 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
                     size="icon"
                     onClick={toggleTheme}
                     className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-                    aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                    aria-label={`Switch to ${
+                      theme === "dark" ? "light" : "dark"
+                    } mode`}
                   >
-                    {theme === "dark" ? (
-                      <Sun className="w-5 h-5" />
-                    ) : (
-                      <Moon className="w-5 h-5" />
-                    )}
+                    {theme === "dark"
+                      ? <Sun className="w-5 h-5" />
+                      : <Moon className="w-5 h-5" />}
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
                   {theme === "dark" ? "Light mode" : "Dark mode"}
                 </TooltipContent>
               </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    asChild
-                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-                  >
+              {socialLinks.map((link) => (
+                <Tooltip key={link.href}>
+                  <TooltipTrigger asChild>
                     <a
-                      href="https://www.linkedin.com/in/christian-howell-b025571a4/"
+                      href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="LinkedIn"
+                      aria-label={link.label}
+                      className="inline-flex items-center justify-center h-9 w-9 rounded-md hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
                     >
-                      <Linkedin className="w-5 h-5" />
+                      {link.label === "LinkedIn" && <Linkedin className="w-5 h-5" />}
+                      {link.label === "GitHub" && <Github className="w-5 h-5" />}
                     </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>LinkedIn</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    asChild
-                    className="hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:glow-border"
-                  >
-                    <a
-                      href="https://github.com/CyTechNomad"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>GitHub</TooltipContent>
-              </Tooltip>
+                  </TooltipTrigger>
+                  <TooltipContent>{link.label}</TooltipContent>
+                </Tooltip>
+              ))}
             </div>
           </div>
 
@@ -159,13 +135,13 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
               size="icon"
               onClick={toggleTheme}
               className="hover:bg-primary/10 hover:text-primary transition-all duration-300 h-8 w-8"
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              aria-label={`Switch to ${
+                theme === "dark" ? "light" : "dark"
+              } mode`}
             >
-              {theme === "dark" ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
+              {theme === "dark"
+                ? <Sun className="w-4 h-4" />
+                : <Moon className="w-4 h-4" />}
             </Button>
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -198,59 +174,26 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
 
                   {/* Navigation Links */}
                   <div className="space-y-4">
-                    <a
-                      href="/"
-                      onClick={() => setIsOpen(false)}
-                      className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
-                        activePath === "/"
-                          ? "border-primary/50 bg-primary/10 text-primary glow-border"
-                          : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Terminal className="w-5 h-5" />
-                        <span className="font-mono">
-                          <span className="text-muted-foreground/50">~/</span>
-                          home
-                        </span>
-                      </div>
-                    </a>
-
-                    <a
-                      href="/blog"
-                      onClick={() => setIsOpen(false)}
-                      className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
-                        activePath === "/blog"
-                          ? "border-primary/50 bg-primary/10 text-primary glow-border"
-                          : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Terminal className="w-5 h-5" />
-                        <span className="font-mono">
-                          <span className="text-muted-foreground/50">~/</span>
-                          blog
-                        </span>
-                      </div>
-                    </a>
-
-                    <a
-                      href="/about"
-                      onClick={() => setIsOpen(false)}
-                      className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
-                        activePath === "/about"
-                          ? "border-primary/50 bg-primary/10 text-primary glow-border"
-                          : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Terminal className="w-5 h-5" />
-                        <span className="font-mono">
-                          <span className="text-muted-foreground/50">~/</span>
-                          about
-                        </span>
-                      </div>
-                    </a>
+                    {navLinks.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`w-full block px-4 py-3 rounded-lg transition-all duration-300 border-2 ${
+                          activePath === link.href
+                            ? "border-primary/50 bg-primary/10 text-primary glow-border"
+                            : "border-primary/20 text-muted-foreground hover:border-primary/40 hover:bg-primary/5"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Terminal className="w-5 h-5" />
+                          <span className="font-mono">
+                            <span className="text-muted-foreground/50">~/</span>
+                            {link.label}
+                          </span>
+                        </div>
+                      </a>
+                    ))}
                   </div>
 
                   {/* Social Links */}
@@ -259,36 +202,19 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
                       <span className="text-primary">$</span> cd /social
                     </div>
                     <div className="flex gap-3 pl-1">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        asChild
-                        className="border-primary/30 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-                      >
+                      {socialLinks.map((link) => (
                         <a
-                          href="https://www.linkedin.com/in/christian-howell-b025571a4/"
+                          key={link.href}
+                          href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label="LinkedIn"
+                          aria-label={link.label}
+                          className="inline-flex items-center justify-center h-9 w-9 rounded-md border border-primary/30 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                         >
-                          <Linkedin className="w-5 h-5" />
+                          {link.label === "LinkedIn" && <Linkedin className="w-5 h-5" />}
+                          {link.label === "GitHub" && <Github className="w-5 h-5" />}
                         </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        asChild
-                        className="border-primary/30 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-                      >
-                        <a
-                          href="https://github.com/CyTechNomad"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="GitHub"
-                        >
-                          <Github className="w-5 h-5" />
-                        </a>
-                      </Button>
+                      ))}
                     </div>
                   </div>
 
@@ -310,4 +236,3 @@ export function Navigation({ currentPath = "/" }: NavigationProps) {
     </nav>
   );
 }
-

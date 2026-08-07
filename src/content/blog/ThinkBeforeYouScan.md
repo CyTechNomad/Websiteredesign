@@ -1,17 +1,15 @@
 ---
 title: "Think Before You Scan: The Hidden Dangers of QR Codes"
-description: ""
-date: 2025-04-01
+description: "QR codes are everywhere, but they come with hidden security risks. Learn how cybercriminals exploit QR codes and how to protect yourself."
+date: 2026-08-07
 tags: ["Security", "Awareness", "QR Codes"]
 ---
 
-# Think Before You Scan: The Hidden Dangers of QR Codes
-
 QR codes have become a ubiquitous part of our daily lives, appearing on
 everything from product packaging to restaurant menus. While these scannable
-codes offer convenience and efficiency, they also pose hidden dangers of which users
-should be aware. In this article, we will explore the risks associated with
-QR codes and provide tips on how to stay safe while using them.
+codes offer convenience and efficiency, they also pose hidden dangers of which
+users should be aware. In this article, we will explore the risks associated
+with QR codes and provide tips on how to stay safe while using them.
 
 ## QR Codes: A Brief Overview
 
@@ -60,6 +58,24 @@ tips:
 - **Inspect the URL**: If the QR code leads to a website, check the URL before
   proceeding. Look for signs of phishing, such as misspelled domain names or
   unusual characters in the address.
+- **Use a QR Scanner with Preview**: Many QR scanner apps show you the URL
+  before opening it. Use this feature to verify the destination looks
+  legitimate.
+- **Look for Tampering**: In public places, check if a QR code sticker has been
+  placed over the original code—a common tactic for attackers.
+- **Avoid QR Codes in Unsolicited Emails**: Treat QR codes in unexpected emails
+  with the same suspicion as suspicious links.
+
+## What to Do If You've Scanned a Malicious Code
+
+If you suspect you've scanned a malicious QR code:
+
+1. **Disconnect from the internet** immediately to prevent further data
+   transmission
+2. **Do not enter any credentials** or personal information
+3. **Run a security scan** on your device
+4. **Change passwords** for any accounts you may have accessed
+5. **Monitor your accounts** for suspicious activity
 
 ## Conclusion
 

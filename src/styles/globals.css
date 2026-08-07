@@ -402,4 +402,18 @@ body {
   .light .about-content p {
     color: #6b6b6b !important;
   }
+  
+  /* Theme-specific visibility */
+  .dark-only {
+    display: block;
+  }
+  .light .dark-only {
+    display: none;
+  }
+  .light-only {
+    display: none;
+  }
+  .light .light-only {
+    display: block;
+  }
 }
